@@ -61,7 +61,7 @@ export const TemperatureBreachDetailScreen: FC = () => {
           label={t('TEMPERATURE')}
           subtext={isHotBreach ? t('HOT_BREACH_SUBTEXT') : t('COLD_BREACH_SUBTEXT')}
           initialValue={temperature}
-          maximumValue={55}
+          maximumValue={100}
           minimumValue={-30}
           step={1}
           metric={`°${t('CELSIUS')}`}

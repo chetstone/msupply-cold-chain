@@ -54,7 +54,7 @@ export const CumulativeDetailSettingScreen: FC = () => {
           label={t('TEMPERATURE')}
           subtext={isHotCumulative ? t('HOT_CUMULATIVE_SUBTEXT') : t('COLD_CUMULATIVE_SUBTEXT')}
           initialValue={temperature}
-          maximumValue={55}
+          maximumValue={100}
           minimumValue={-30}
           step={1}
           metric={`°${t('CELSIUS')}`}

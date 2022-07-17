@@ -5,7 +5,7 @@ export const FONT = {
     BOLD: 'Roboto-Bold',
   },
   SIZE: {
-    XL: 70,
+    XL: 50,
     L: 40,
     M: 26,
     MS: 18,
