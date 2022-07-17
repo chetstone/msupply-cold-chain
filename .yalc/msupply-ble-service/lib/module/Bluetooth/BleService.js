@@ -27,6 +27,11 @@ const dummyLogger = {
     /*do nothing*/
   }
 };
+
+function toFahrenheit(x) {
+  return Math.round((x * 9 / 5 + 32) * 10) / 10;
+}
+
 export class BleService {
   constructor(manager, logger = dummyLogger) {
     _defineProperty(this, "manager", void 0);
@@ -209,7 +214,7 @@ export class BleService {
             if (index % 2 !== 0) return acc;
             return [...acc, {
               time: '',
-              temperature: buffer.readInt16BE(index) / BLUE_MAESTRO.TEMPERATURE_DIVISOR
+              temperature: toFahrenheit(buffer.readInt16BE(index) / BLUE_MAESTRO.TEMPERATURE_DIVISOR)
             }];
           }, []);
         } else {
@@ -254,7 +259,7 @@ export class BleService {
             const log = logBuffer.reduce((acc, _, index) => {
               if (index % 8 !== 0) return acc; //const time = logBuffer.readInt32LE(index);
 
-              const temperature = Math.round(logBuffer.readInt16LE(index + 4) / BT510.TEMPERATURE_DIVISOR * 10) / 10;
+              const temperature = toFahrenheit(Math.round(logBuffer.readInt16LE(index + 4) / BT510.TEMPERATURE_DIVISOR * 10) / 10);
               const eventType = logBuffer.readInt8(index + 6); //const salt = logBuffer.readInt8(index + 7);
 
               if (eventType === 1) {
